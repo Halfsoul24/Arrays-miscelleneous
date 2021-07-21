@@ -1,0 +1,39 @@
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        
+        int i=0, j=0;
+        int len = m;
+        int count=0;
+        while(i<(m+n) && j<n){
+            
+            if(nums2[j] < nums1[i]){
+                int k = len-i;
+                int x=0;
+                while(x!=k && len<(m+n)){
+                    nums1[len-x] = nums1[len-1-x];
+                    x++;
+                }
+                nums1[i] = nums2[j];
+                // i++;
+                j++; 
+                len++;
+                
+            }
+             i++;
+        }
+       count  = n-j;
+        int y=0;
+        // j++;
+        // cout<<j<<endl;
+        while(count>0){
+            
+           nums1[len+y] = nums2[j];
+            j++;
+            y++;
+            count--;
+            
+        }
+        
+    }
+};
