@@ -1,0 +1,32 @@
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        
+        vector<char> v;
+        for(int i=0; i<s.size(); i++){
+            if((s[i]>=32 && s[i]<=47) ||	(s[i]>=58 && s[i]<=64)  ||	(s[i]>=91&& s[i]<=96) || (s[i]>=123 && s[i]<=126)){
+                
+                continue;
+                
+            }
+            else{
+                if(s[i]>=65 && s[i]<=90){
+                    s[i]+=32;
+                }
+                v.push_back(s[i]);
+            }
+        }
+        vector<char> temp = v;
+        
+        for(int i=0; i<v.size() ; i++){
+            cout<<v[i];
+        }
+        reverse(temp.begin() , temp.end());
+        if(v==temp){
+            return true;
+        }
+        return false;
+        
+        
+    }
+};
