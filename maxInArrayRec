@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int find_max_min(vector<int> v, int start, int end){
+    
+    int mn = INT_MAX;
+    if(start==end){
+        return v[start];
+    }
+    
+    if(end-start+1==2){
+        if(v[start]>v[end]){
+            // cout<<v[start]<<endl;
+            return  v[start];
+        }
+        else{
+            return  v[end];
+        }
+    }
+    int mid = start + (end-start)/2;
+    return max(find_max_min(v,start, mid), find_max_min(v,mid+1, end));
+
+} 
+main(){
+    
+    vector<int> v;
+    int arr[5];
+    for(int i=0; i<5; i++) cin>>arr[i];
+    
+    for(int i=0; i<5; i++){
+        v.push_back(arr[i]);
+        // cout<<v[i]<<" ";
+    }
+        
+    cout<<find_max_min(v, 0, v.size()-1);    
+}
